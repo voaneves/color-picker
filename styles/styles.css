@@ -1,0 +1,64 @@
+/* Reset default styles */
+body,
+canvas {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Set crosshair cursor for the canvas */
+canvas {
+  cursor: crosshair;
+}
+
+/* Adjust font weight for headings */
+h1,
+h2 {
+  font-weight: bold;
+}
+
+/* Style for hex element */
+#hex {
+  position: absolute;
+  left: 0;
+  top: -100vh;
+  color: white;
+}
+
+/* Style for copied element */
+#copied {
+  font-size: 14px;
+  width: 70vw;
+  color: white;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 15px 15px;
+  position: absolute;
+  top: -100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+/* Animation for appear class */
+.appear {
+  animation: swipe 3s forwards;
+}
+
+@keyframes swipe {
+  from {
+    top: -100px;
+  }
+  70% {
+    top: 0px;
+  }
+  to {
+    top: -100px;
+  }
+}
