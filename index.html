@@ -15,7 +15,6 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="http://voaneves.com/color-picker">
         <title>Color Picker - Select and Copy Colors with Ease</title>
-        <link rel="stylesheet" href="style/style.css" />
         <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
         <script type="application/ld+json">
         {
@@ -27,16 +26,19 @@
         }
         </script>
         <link rel="stylesheet" href="styles/styles.css">
-        <script async src="scripts/sw.min.js"></script>
+        <script async src="sw.min.js"></script>
         <script defer src="scripts/main.min.js"></script>
         <script defer src="scripts/console.min.js"></script>
     </head>
     <body>
+        <header>
+            <h1 class="no-show-title">Full-page Color Picker</h1>
+        </header>
         <main>
             <div id="copied" role="alert" aria-live="assertive">
                 <div class="text">
                     <h1 id="selected-color" aria-label="Selected color">#000000</h1>
-                    <h2 id="color-subtitle">Copied to clipboard</h2>
+                    <h2 id="selected-color_subtitle">Copied to clipboard</h2>
                 </div>
             </div>
             <canvas id="canvas" aria-label="Color picker canvas"
