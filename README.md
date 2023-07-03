@@ -66,7 +66,11 @@ The project uses the following technologies:
 
 The page is optimized for all platforms (cross-browser) and has a Lighthouse score as shown below.
 
-[![Lighthouse][lighthouse-img]][lighthouse-link]
+<p align="center">
+  <a href="https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fvoaneves.com%2Fcolor-picker%2F&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext">
+    <img alt="Lighthouse score" src="img/lighthouse_score.png" />
+  </a>
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,6 +103,7 @@ This project includes the following features:
 
 ## To do
 
+- [ ] Add modal with instructios while opening the page.
 - [ ] Update images of the README.md.
 - [x] Transform into a web app.
 - [x] Improve page structure, add <meta> tags, and optimize JavaScript delivery.
@@ -142,7 +147,3 @@ This project is licensed under the [MIT License](/LICENSE).
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/voaneves
 [color-picker-logo]: img/color-picker-logo.webp
-[color-picker-img]: img/color-picker.png
-[color-picker-link]: https://voaneves.com/color-picker
-[lighthouse-img]: img/lighthouse_score.png
-[lighthouse-link]: https://pagespeed.web.dev/analysis/https-voaneves-com-color-picker/dy2zzoyur6?form_factor=mobile
