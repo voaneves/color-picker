@@ -1,0 +1,29 @@
+{
+  "name": "Color Picker",
+  "short_name": "Picker",
+  "start_url": "./color-picker",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "img/maskable_icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#976d0c",
+  "serviceworker": {
+    "src": "sw.min.js"
+  }
+}
