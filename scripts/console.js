@@ -28,7 +28,7 @@ const urls = {
   portfolio: "https://voaneves.com",
   linkedin: "https://linkedin.com/in/voaneves",
   github: "https://github.com/voaneves",
-  readme: "https://github.com/voaneves/voaneves.github.io",
+  readme: "https://github.com/voaneves/color-picker",
 };
 
 const messages = [
