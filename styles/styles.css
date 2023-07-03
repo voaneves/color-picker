@@ -1,9 +1,23 @@
-/* Reset default styles */
-body,
-canvas {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  list-style: none;
   overflow: hidden;
+}
+
+a,
+a:hover,
+a:visited,
+a:active,
+a:link {
+  text-decoration: none;
+}
+
+/* Reset default styles */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
 }
 
 /* Set crosshair cursor for the canvas */
@@ -11,41 +25,47 @@ canvas {
   cursor: crosshair;
 }
 
-/* Adjust font weight for headings */
-h1,
-h2 {
-  font-weight: bold;
+.no-show-title {
+  display: none;
 }
 
 /* Style for hex element */
-#hex {
+#hex,
+#copied {
   position: absolute;
-  left: 0;
-  top: -100vh;
   color: white;
 }
 
 /* Style for copied element */
 #copied {
-  font-size: 14px;
-  width: 70vw;
-  color: white;
-  z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 70vw;
+  z-index: 999;
   border-radius: 0 0 15px 15px;
-  position: absolute;
-  top: -100px;
-  height: 100px;
-  margin-left: auto;
-  margin-right: auto;
+  top: -110px;
+  height: 110px;
   left: 0;
   right: 0;
-  text-align: center;
+  margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+#selected-color,
+#selected-color-subtitle {
+  text-align: center;
+}
+
+#selected-color {
+  font-size: 3rem;
+}
+
+#selected-color_subtitle {
+  font-weight: 100;
+  font-size: 1.2rem;
 }
 
 /* Animation for appear class */
@@ -55,12 +75,12 @@ h2 {
 
 @keyframes swipe {
   from {
-    top: -100px;
+    top: -110px;
   }
   70% {
     top: 0px;
   }
   to {
-    top: -100px;
+    top: -110px;
   }
 }
