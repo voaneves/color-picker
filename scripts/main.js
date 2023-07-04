@@ -1,7 +1,9 @@
-function runColorPicker() {
+(function () {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
   const h1 = document.getElementById("hex");
+  const copiedMessage = document.getElementById("copied");
+  const canvasStyle = canvas.style;
 
   const gradients = [
     {
@@ -33,36 +35,38 @@ function runColorPicker() {
     },
   ];
 
-  const setCanvasSize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  function setCanvasSize() {
+    const { innerWidth, innerHeight } = window;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
     gradients.forEach(({ x0, y0, x1, y1, stops }) => {
       const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
       stops.forEach((color, index) =>
         gradient.addColorStop(index / (stops.length - 1), color)
       );
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.fillRect(0, 0, innerWidth, innerHeight);
     });
-  };
+  }
 
-  const adjustHexPosition = (x, y) => {
-    const maxX = window.innerWidth - 1.2 * h1.offsetWidth;
-    const maxY = window.innerHeight - 1.5 * h1.offsetHeight;
+  function adjustHexPosition(x, y) {
+    const { offsetWidth, offsetHeight } = h1;
+    const maxX = window.innerWidth - 1.2 * offsetWidth;
+    const maxY = window.innerHeight - 1.2 * offsetHeight;
     const adjustedX = Math.max(0, Math.min(x, maxX));
     const adjustedY = Math.max(0, Math.min(y, maxY));
     return { x: adjustedX, y: adjustedY };
-  };
+  }
 
-  const invertColor = (color) => {
+  function invertColor(color) {
     const hexValue = color.substring(1);
     const invertedHex = (0xffffff ^ parseInt(hexValue, 16))
       .toString(16)
       .padStart(6, "0");
     return "#" + invertedHex;
-  };
+  }
 
-  const handleMouseMove = (event) => {
+  function handleMouseMove(event) {
     const { pageX: x, pageY: y } = event;
     const { data } = ctx.getImageData(x, y, 1, 1);
     const hexValue =
@@ -75,33 +79,55 @@ function runColorPicker() {
     h1.textContent = hexValue;
     h1.style.color = invertColor(hexValue);
     h1.style.left = `${adjustedX + 25}px`;
-    h1.style.top = `${adjustedY}px`;
-  };
+    h1.style.top = `${adjustedY + 10}px`;
+  }
 
-  const handleCopy = (hexValue) => {
-    navigator.clipboard.writeText(hexValue);
-    const m = document.getElementById("copied");
-    m.querySelector("h1").textContent = hexValue;
-    m.style.color = invertColor(hexValue);
-    m.style.background = hexValue;
-    m.classList.add("appear");
-    setTimeout(() => {
-      m.classList.remove("appear");
-      canvas.style.cursor = "crosshair";
-    }, 3001);
-  };
+  function handleCopy(hexValue) {
+    navigator.clipboard.writeText(hexValue).then(() => {
+      const style = copiedMessage.style;
+      style.color = invertColor(hexValue);
+      style.background = hexValue;
+      copiedMessage.querySelector("h1").textContent = hexValue;
+      copiedMessage.classList.add("appear");
+      setTimeout(() => {
+        copiedMessage.classList.remove("appear");
+        canvasStyle.cursor = "crosshair";
+      }, 3001);
+    });
+  }
 
-  const handleClick = ({ target }) => {
+  function handleClick(event) {
     const hexValue = h1.textContent;
-    target.style.cursor = "not-allowed";
+    event.target.style.cursor = "not-allowed";
     handleCopy(hexValue);
-  };
+  }
+
+  function initializeModal() {
+    const modal = document.getElementById("modal-one");
+    const isModalDismissed =
+      JSON.parse(localStorage.getItem("isModalDismissed")) || false;
+
+    const closeModal = () => {
+      localStorage.setItem("isModalDismissed", JSON.stringify(true));
+      modal.classList.remove("open");
+    };
+
+    const handleModalClick = (event) => {
+      if (event.target.classList.contains("modal-exit")) {
+        closeModal();
+      }
+    };
+
+    if (!isModalDismissed) {
+      modal.classList.add("open");
+      modal.addEventListener("click", handleModalClick);
+    }
+  }
 
   canvas.addEventListener("mousemove", handleMouseMove);
   canvas.addEventListener("click", handleClick);
   window.addEventListener("resize", setCanvasSize);
 
   setCanvasSize();
-}
-
-runColorPicker();
+  initializeModal();
+})();

@@ -34,6 +34,7 @@
         <header>
             <h1 class="no-show-title">Full-page Color Picker</h1>
         </header>
+
         <main>
             <div id="copied" role="alert" aria-live="assertive">
                 <div class="text">
@@ -45,5 +46,18 @@
                 alt="Color picker"></canvas>
             <h1 id="hex">#000000</h1>
         </main>
+
+        <div class="modal" id="modal-one">
+            <div class="modal-bg modal-exit"></div>
+            <div class="modal-container">
+                <h2 class="modal-container__text">Move your cursor to any
+                    color...</span>
+                <img loading="lazy" class="modal-container__img"
+                    src="img/color-picker.gif">
+                <h2 class="modal-container__text">...and click. <strong><em>That's
+                            it.</em></strong></span>
+                <button class="modal-close modal-exit">X</button>
+            </div>
+        </div>
     </body>
 </html>
