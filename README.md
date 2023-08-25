@@ -1,12 +1,14 @@
 <a name="readme-top"></a>
+<div align="center">
+  
+  [![Contributors][contributors-shield]][contributors-url]
+  [![Forks][forks-shield]][forks-url]
+  [![Stargazers][stars-shield]][stars-url]
+  [![Issues][issues-shield]][issues-url]
+  [![MIT License][license-shield]][license-url]
+  [![LinkedIn][linkedin-shield]][linkedin-url]
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
+</div>
 <br />
 <div align="center">
   <a href="https://github.com/voaneves/color-picker">
@@ -143,7 +145,7 @@ This project is licensed under the [MIT License](/LICENSE).
 [issues-shield]: https://img.shields.io/github/issues/voaneves/color-picker.svg?style=for-the-badge
 [issues-url]: https://github.com/voaneves/color-picker/issues
 [license-shield]: https://img.shields.io/github/license/voaneves/color-picker.svg?style=for-the-badge
-[license-url]: https://github.com/voaneves/color-picker/blob/master/LICENSE.txt
+[license-url]: https://github.com/voaneves/color-picker/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/voaneves
 [color-picker-logo]: img/color-picker-logo.webp
