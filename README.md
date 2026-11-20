@@ -1,151 +1,109 @@
-<a name="readme-top"></a>
+<a id="top"></a>
+
 <div align="center">
-  
-  [![Contributors][contributors-shield]][contributors-url]
-  [![Forks][forks-shield]][forks-url]
-  [![Stargazers][stars-shield]][stars-url]
-  [![Issues][issues-shield]][issues-url]
-  [![MIT License][license-shield]][license-url]
-  [![LinkedIn][linkedin-shield]][linkedin-url]
+
+<img alt="color-picker logo" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker-logo.png" width="112" height="112" />
+
+<h1>color-picker</h1>
+
+<p>
+  <strong>A full-page color picker: move the mouse to read a color and click to copy it.</strong><br />
+  <sub>Plain HTML, CSS and JavaScript, no dependencies</sub>
+</p>
+
+<p>
+  <a href="https://voaneves.github.io/color-picker/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/live-dark.svg" /><img alt="Open the picker" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/live-light.svg" height="40" /></picture></a>
+  <a href="#getting-started"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/start-dark.svg" /><img alt="Getting started" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/start-light.svg" height="40" /></picture></a>
+</p>
+
+<p><sub>Need something like this? <a href="https://voaneves.com/en/#contact"><strong>Let's talk →</strong></a></sub></p>
+
+<p>
+  <a href="https://github.com/voaneves/color-picker/blob/main/LICENSE"><img src="https://img.shields.io/github/license/voaneves/color-picker?style=flat-square&color=0A0A0A" alt="MIT License" /></a>
+  <img src="https://img.shields.io/badge/HTML%20%C2%B7%20CSS%20%C2%B7%20JS-PWA-b80000?style=flat-square" alt="HTML, CSS and JavaScript, installable as a PWA" />
+</p>
+
+<p>
+  <a href="https://voaneves.github.io/color-picker/">Live demo</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#getting-started">Getting started</a> ·
+  <a href="#to-do">To do</a> ·
+  <a href="#contact">Contact</a>
+</p>
 
 </div>
-<br />
-<div align="center">
-  <a href="https://github.com/voaneves/color-picker">
-    <img src="img/color-picker-logo.png" alt="Logo" width="80" height="80">
-  </a>
-  <h3 align="center">color-picker</h3>
-  <p align="center">
-    A full-page color picker with mouse cursor and text display.
-    <br />
-    <a href="https://github.com/voaneves/color-picker"><strong>Explore the documentation »</strong></a>
-    <br />
-    <br />
-    <a href="https://voaneves.com/color-picker">View Demo</a>
-    ·
-    <a href="https://github.com/voaneves/color-picker/issues">Report a Bug</a>
-    ·
-    <a href="https://github.com/voaneves/color-picker/issues">Request a Feature</a>
-  </p>
-</div>
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About the Project</a>
-      <ul>
-        <li><a href="#technologies-used">Technologies Used</a></li>
-      </ul>
-    </li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#getting-started">Getting started</a></li>
-    <li><a href="#to-do">To Do</a></li>
-    <li><a href="#reporting-bugs">Reporting Bugs</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/rule-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/rule-light.svg" />
+  <img alt="" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/rule-light.svg" width="100%" />
+</picture>
 
 ## About the project
 
+Move the mouse across the page to see a color's RGB value as text, then click to copy it to your clipboard.
+
 <p align="center">
-  <a href="https://voaneves.com/color-picker">
-    <img alt="Website Image" src="img/color-picker.png" />
+  <a href="https://voaneves.github.io/color-picker/">
+    <img alt="Color picker in use, showing the selected color as text" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker.gif" />
   </a>
 </p>
 
-This repository contains a color picker project that allows you to select colors ranging from black to white using your mouse cursor, with the selected color displayed as text below. When you click on any color on the page, it will be copied to the clipboard, and a text will appear on the screen confirming the copy. The color picker is hosted on GitHub Pages.
+The picker covers colors from black to white; clicking any color copies it and shows a confirmation message on screen. It is hosted on GitHub Pages.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+**Demo:** <https://voaneves.github.io/color-picker/>
 
-### Technologies Used
+### Technologies
 
-The project uses the following technologies:
-
-- HTML
-- CSS
-- JavaScript
-
-The page is optimized for all platforms (cross-browser) and has a Lighthouse score as shown below.
+HTML, CSS and JavaScript, with no dependencies. The page works across platforms and has the Lighthouse score below.
 
 <p align="center">
-  <a href="https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fvoaneves.com%2Fcolor-picker%2F&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext">
-    <img alt="Lighthouse score" src="img/lighthouse_score.png" />
-  </a>
+  <img alt="Lighthouse score" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/lighthouse_score.png" />
 </p>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Features
 
-This project includes the following features:
-
-- Easy-to-use color-picker with all the RGB colors.
-- Click to copy colors to your clipboard.
-- Styling focused on the best acessibility guidelines (using maximum contrast).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- An easy-to-use picker with all the RGB colors.
+- Click to copy a color to your clipboard.
+- Styling focused on accessibility, using maximum contrast.
 
 ## Getting started
 
-1. Clone this repository to your machine:
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/color-picker.git
-
+   git clone https://github.com/voaneves/color-picker.git
    ```
 
-2. Open the index.html file in a web browser.
-
-3. Use the mouse to select colors while moving it.
-
-4. If you click on the selected color, a sliding notification will appear and show which color you selected and copy it to the clipboard.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+2. Open `index.html` in a web browser.
+3. Move the mouse to select colors.
+4. Click the selected color: a sliding notification shows which color you
+   picked and copies it to the clipboard.
 
 ## To do
 
-- [ ] Add modal with instructios while opening the page.
-- [ ] Update images of the README.md.
-- [x] Transform into a web app.
-- [x] Improve page structure, add <meta> tags, and optimize JavaScript delivery.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- [ ] Add a modal with instructions when the page opens
+- [ ] Update the README images
+- [x] Transform into a web app
+- [x] Improve page structure, add `<meta>` tags, and optimize JavaScript delivery
 
 ## Reporting bugs
 
-Found a bug or issue in the project? Follow the steps below:
+Found a bug? Check the [issues](https://github.com/voaneves/color-picker/issues) first; if it is not there, open a new one with a clear title, the steps to reproduce it and, if possible, screenshots. Pull requests are welcome too.
 
-1. Check if the bug has already been reported in our "Issues" section on GitHub: link to Issues.
+## Contact
 
-2. If you don't find an existing report about the bug, click on "New Issue" to open a new bug report.
+<p>
+  <a href="https://voaneves.com/en/#contact"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/hire-dark.svg" /><img alt="Let's talk" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/hire-light.svg" height="40" /></picture></a>
+  <a href="https://voaneves.com/en/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/site-dark.svg" /><img alt="voaneves.com" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/buttons/site-light.svg" height="40" /></picture></a>
+</p>
 
-3. Provide a clear and descriptive title for the bug, along with a detailed description of the steps needed to reproduce it.
+<a href="https://linkedin.com/in/voaneves">LinkedIn</a> · <a href="mailto:victorneves478@gmail.com">E-mail</a>
 
-4. If possible, include screenshots, relevant code snippets, or any other information that may help identify and resolve the bug.
+<p align="center">
+  <img alt="VOANEVES mark" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/mark-duo.svg" width="32" height="32" />
+</p>
 
-5. Click on "Submit Issue" to create the bug report.
+<p align="center"><sub>Released under the <a href="https://github.com/voaneves/color-picker/blob/main/LICENSE">MIT License</a>.</sub></p>
 
-Thank you for reporting bugs! If you would like to contribute with code, you can open a PR, and your participation is more than welcome.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## License
-
-This project is licensed under the [MIT License](/LICENSE).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-[contributors-shield]: https://img.shields.io/github/contributors/voaneves/color-picker.svg?style=for-the-badge
-[contributors-url]: https://github.com/voaneves/color-picker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/voaneves/color-picker.svg?style=for-the-badge
-[forks-url]: https://github.com/voaneves/color-picker/network/members
-[stars-shield]: https://img.shields.io/github/stars/voaneves/color-picker.svg?style=for-the-badge
-[stars-url]: https://github.com/voaneves.com/color-picker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/voaneves/color-picker.svg?style=for-the-badge
-[issues-url]: https://github.com/voaneves/color-picker/issues
-[license-shield]: https://img.shields.io/github/license/voaneves/color-picker.svg?style=for-the-badge
-[license-url]: https://github.com/voaneves/color-picker/blob/main/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/voaneves
-[color-picker-logo]: img/color-picker-logo.webp
+<p align="center"><sub><a href="#top">↑ Back to top</a></sub></p>

@@ -1,0 +1,46 @@
+{
+  "repo": "color-picker",
+  "branch": "main",
+  "lang": "en",
+  "license": "MIT",
+  "name": "color-picker",
+  "tagline": "A full-page color picker: move the mouse to read a color and click to copy it.",
+  "description": "Full-page color picker that shows the color under the mouse as text and copies it to the clipboard on click.",
+  "logo": {
+    "existing": "img/color-picker-logo.png"
+  },
+  "buttons": [
+    {
+      "id": "live",
+      "text": "Open the picker",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.github.io/color-picker/"
+    },
+    {
+      "id": "start",
+      "text": "Getting started",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://github.com/voaneves/color-picker#getting-started"
+    },
+    {
+      "id": "hire",
+      "text": "Let's talk",
+      "kind": "primary",
+      "font": "sans",
+      "href": "https://voaneves.com/en/#contact",
+      "landing": false
+    },
+    {
+      "id": "site",
+      "text": "voaneves.com",
+      "kind": "secondary",
+      "font": "sans",
+      "href": "https://voaneves.com/en/",
+      "landing": false
+    }
+  ],
+  "landing": false,
+  "live_url": "https://voaneves.github.io/color-picker/"
+}
