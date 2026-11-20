@@ -2,7 +2,11 @@
 
 <div align="center">
 
-<img alt="color-picker logo" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker-logo.png" width="112" height="112" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-light.svg" />
+  <img alt="color-picker logo: a colour dropper, with a red dot for the picked colour" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-light.svg" width="112" height="112" />
+</picture>
 
 <h1>color-picker</h1>
 

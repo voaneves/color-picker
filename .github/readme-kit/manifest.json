@@ -7,6 +7,7 @@
   "tagline": "A full-page color picker: move the mouse to read a color and click to copy it.",
   "description": "Full-page color picker that shows the color under the mouse as text and copies it to the clipboard on click.",
   "logo": {
+    "glyph": "dropper",
     "existing": "img/color-picker-logo.png"
   },
   "buttons": [
