@@ -5,14 +5,17 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-dark.svg" />
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-light.svg" />
-  <img alt="color-picker logo: a colour dropper, with a red dot for the picked colour" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-light.svg" width="112" height="112" />
+  <img alt="color-picker logo: a colour dropper with a red dot for the picked colour" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/logo/logo-light.svg" width="112" height="112" />
 </picture>
 
 <h1>color-picker</h1>
 
 <p>
-  <strong>A full-page color picker: move the mouse to read a color and click to copy it.</strong><br />
-  <sub>Plain HTML, CSS and JavaScript, no dependencies</sub>
+  <strong>Full-page Canvas 2D color picker: sweep your pointer across the spectrum to preview any RGB hue and click to copy its hex value.</strong><br />
+  <sub>
+    Installable zero-dependency PWA with bitwise contrast inversion and Lighthouse 100 scores —
+    <kbd>HTML5 Canvas</kbd> · <kbd>SCSS</kbd> · <kbd>JavaScript</kbd> · <kbd>Clipboard API</kbd> · <kbd>PWA</kbd>
+  </sub>
 </p>
 
 <p>
@@ -24,14 +27,15 @@
 
 <p>
   <a href="https://github.com/voaneves/color-picker/blob/main/LICENSE"><img src="https://img.shields.io/github/license/voaneves/color-picker?style=flat-square&color=0A0A0A" alt="MIT License" /></a>
-  <img src="https://img.shields.io/badge/HTML%20%C2%B7%20CSS%20%C2%B7%20JS-PWA-b80000?style=flat-square" alt="HTML, CSS and JavaScript, installable as a PWA" />
+  <img src="https://img.shields.io/badge/HTML_%C2%B7_CSS_%C2%B7_JS-PWA-b80000?style=flat-square" alt="HTML, CSS and JavaScript, installable as a PWA" />
+  <img src="https://img.shields.io/badge/Lighthouse-100%2F100-0A0A0A?style=flat-square" alt="Lighthouse 100" />
 </p>
 
 <p>
   <a href="https://voaneves.github.io/color-picker/">Live demo</a> ·
   <a href="#features">Features</a> ·
+  <a href="#architecture">Architecture</a> ·
   <a href="#getting-started">Getting started</a> ·
-  <a href="#to-do">To do</a> ·
   <a href="#contact">Contact</a>
 </p>
 
@@ -43,58 +47,83 @@
   <img alt="" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/rule-light.svg" width="100%" />
 </picture>
 
+<a id="features"></a>
 ## About the project
 
-Move the mouse across the page to see a color's RGB value as text, then click to copy it to your clipboard.
+Turn the entire browser viewport into a full-bleed color canvas where moving your cursor reads pixel RGB hex codes in real time and clicking copies the selected swatch to your clipboard.
+
+Demo: <https://voaneves.github.io/color-picker/>
 
 <p align="center">
   <a href="https://voaneves.github.io/color-picker/">
-    <img alt="Color picker in use, showing the selected color as text" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker.gif" />
+    <img alt="Full-viewport Color Picker canvas sampling #001aff with auto-inverted #ffe500 readout" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker.png" />
   </a>
 </p>
 
-The picker covers colors from black to white; clicking any color copies it and shows a confirmation message on screen. It is hosted on GitHub Pages.
+### Two-pass `<canvas>` spectrum &amp; XOR contrast inversion
 
-**Demo:** <https://voaneves.github.io/color-picker/>
+`setCanvasSize()` draws 7 horizontal RGB color stops overlaid by a vertical white/transparent/black luminance ramp (`willReadFrequently: true`). On cursor movement, `getImageData()`[^1] extracts the exact pixel and `invertColor()` computes the 24-bit bitwise XOR complement (`0xffffff ^ parseInt(hexValue, 16)`) so both the floating `#hex` label and toast banner remain readable across every color from `#ffffff` to `#000000`.
 
-### Technologies
+### One-click copy &amp; Lighthouse 100 showcase
 
-HTML, CSS and JavaScript, with no dependencies. The page works across platforms and has the Lighthouse score below.
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img alt="Animated pick and copy workflow" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/color-picker.gif" /><br />
+      <sub><strong>Interactive Pick &amp; Copy</strong> — shown in the onboarding modal (<code>#modal-one</code>) until dismissed</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <a href="https://googlechrome.github.io/lighthouse/viewer/?psiurl=https%3A%2F%2Fvoaneves.com%2Fcolor-picker%2F&strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&category=pwa&utm_source=lh-chrome-ext">
+        <img alt="Lighthouse score" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/lighthouse_score.png" />
+      </a><br />
+      <sub><strong>100</strong> Performance, Accessibility, Best Practices, SEO &amp; PWA</sub>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <img alt="Lighthouse score" src="https://raw.githubusercontent.com/voaneves/color-picker/main/img/lighthouse_score.png" />
-</p>
+<a id="architecture"></a>
+## Pixel-sampling flow &amp; PWA caching
 
-## Features
+```mermaid
+flowchart LR
+  G1["Pass 1 (7-Stop RGB Sweep)"] --> CV["Canvas 2D (willReadFrequently)"]
+  G2["Pass 2 (Luminance Gradient)"] --> CV
+  MM["mousemove (pageX, pageY)"] --> GI["ctx.getImageData(x, y, 1, 1)"]
+  GI --> HX["Format #rrggbb + Clamp Bounds"]
+  HX --> INV["invertColor (0xffffff XOR Hex)"]
+  CK["click Event"] --> CB["navigator.clipboard.writeText()"]
+  CB --> AL["#copied ARIA Alert (3001ms)"]
+```
 
-- An easy-to-use picker with all the RGB colors.
-- Click to copy a color to your clipboard.
-- Styling focused on accessibility, using maximum contrast.
+<dl>
+  <dt><strong>Bounds clamping &amp; ARIA toast (<code>scripts/main.js</code>)</strong></dt>
+  <dd><code>adjustHexPosition()</code> keeps the floating label inside viewport bounds near edges, while clicking writes via <code>navigator.clipboard.writeText()</code>[^2] and slides in a <code>role="alert"</code> <code>aria-live="assertive"</code> notification for <code>3001ms</code>.</dd>
+  <dt><strong>Offline Service Worker (<code>sw.js</code> → <code>worker.js</code>)</strong></dt>
+  <dd>Pre-caches <code>["/"]</code> into <code>precache-v1</code> on install and serves same-origin assets cache-first via <code>runtime</code> alongside <code>manifest.json</code>.</dd>
+</dl>
 
+<a id="getting-started"></a>
 ## Getting started
 
-1. Clone the repository:
+> [!TIP]
+> Serve over `http://localhost` rather than `file://` so the Clipboard API and Service Worker register cleanly in a secure origin.
 
-   ```bash
-   git clone https://github.com/voaneves/color-picker.git
-   ```
+```bash
+git clone https://github.com/voaneves/color-picker.git
+cd color-picker
+python -m http.server 8000
+```
 
-2. Open `index.html` in a web browser.
-3. Move the mouse to select colors.
-4. Click the selected color: a sliding notification shows which color you
-   picked and copies it to the clipboard.
+Open `http://localhost:8000`, dismiss the onboarding modal, sweep your pointer across the spectrum, and click to copy any `#rrggbb` color.
 
-## To do
+### To do
 
-- [ ] Add a modal with instructions when the page opens
-- [ ] Update the README images
-- [x] Transform into a web app
-- [x] Improve page structure, add `<meta>` tags, and optimize JavaScript delivery
+- [x] Full-bleed Canvas 2D RGB + luminance spectrum with auto-inverted cursor hex label
+- [x] Onboarding modal with animated GIF (`#modal-one`) and `localStorage` persistence (`isModalDismissed`)
+- [x] Installable PWA (`manifest.json`, Service Worker, semantic `<meta>` tags, minified JS)
+- [ ] Add modal instructions button and support additional readouts (RGB / HSL / OKLCH)
 
-## Reporting bugs
-
-Found a bug? Check the [issues](https://github.com/voaneves/color-picker/issues) first; if it is not there, open a new one with a clear title, the steps to reproduce it and, if possible, screenshots. Pull requests are welcome too.
-
+<a id="contact"></a>
 ## Contact
 
 <p>
@@ -108,6 +137,9 @@ Found a bug? Check the [issues](https://github.com/voaneves/color-picker/issues)
   <img alt="VOANEVES mark" src="https://raw.githubusercontent.com/voaneves/color-picker/main/assets/brand/mark-duo.svg" width="32" height="32" />
 </p>
 
-<p align="center"><sub>Released under the <a href="https://github.com/voaneves/color-picker/blob/main/LICENSE">MIT License</a>.</sub></p>
+<p align="center"><sub>Released under the <a href="https://github.com/voaneves/color-picker/blob/main/LICENSE">MIT License</a> © 2026 <a href="https://github.com/voaneves">Victor Neves</a> · <strong>VOANEVES.</strong></sub></p>
 
 <p align="center"><sub><a href="#top">↑ Back to top</a></sub></p>
+
+[^1]: Pixel sampling initializes `canvas.getContext('2d', { willReadFrequently: true })` in `scripts/main.js` to avoid GPU readback stalls.
+[^2]: Uses `navigator.clipboard.writeText(currentHex)` paired with transient pointer-lock state during the toast animation.
